@@ -4,6 +4,7 @@
  */
 package ui;
 import model.Employeehistory;
+import model.Employee;
 
 /**
  *
@@ -16,6 +17,7 @@ public class mainFrame extends javax.swing.JFrame {
      */
     
     Employeehistory history;
+    Employee emp;
     public mainFrame() {
         initComponents();
         history = new Employeehistory();
@@ -108,7 +110,7 @@ public class mainFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-                viewjpanel ViewPanel = new viewjpanel(history);
+                viewjpanel ViewPanel = new viewjpanel(history, emp );
         jSplitPane2.setRightComponent(ViewPanel);
     }//GEN-LAST:event_jButton2ActionPerformed
 

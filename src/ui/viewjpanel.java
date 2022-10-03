@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ui;
+import javax.swing.JOptionPane;
 import model.Employeehistory;
+import javax.swing.table.DefaultTableModel;
+import model.Employee;
 
 /**
  *
@@ -16,10 +19,12 @@ public class viewjpanel extends javax.swing.JPanel {
      *
      */
     Employeehistory history;
-    public viewjpanel(Employeehistory history) {
+    Employee abc;
+    public viewjpanel(Employeehistory history, Employee abc) {
         initComponents();
         this.history = history;
-       // populateTable();
+        //this.abc = abc;
+       PopulateTable();
     }
 
     /**
@@ -81,6 +86,11 @@ public class viewjpanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("view");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Delete");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -224,6 +234,15 @@ public class viewjpanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex= jTable1.getSelectedRow();
+
+            DefaultTableModel model= (DefaultTableModel) jTable1.getModel();
+        Employee selectedRow= (Employee) model.getValueAt(selectedRowIndex, 0);
+        
+        history.delEmp(selectedRow);
+        JOptionPane.showMessageDialog(this, "Selected row deleted");
+       
+        PopulateTable();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtpostitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpostitActionPerformed
@@ -269,6 +288,37 @@ public class viewjpanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex= jTable1.getSelectedRow();
+        DefaultTableModel model= (DefaultTableModel) jTable1.getModel();
+        Employee selectedRow= (Employee) model.getValueAt(selectedRowIndex, 0);
+       
+        String Name = selectedRow.getName();
+        String EmpID = selectedRow.getEmployeeId();
+        int Age = selectedRow.getAge();
+        String Gender = selectedRow.getGender();
+        String startdate = selectedRow.getStart_date();
+        String level = selectedRow.getLevel();
+        String Teaminfo = selectedRow.getTeamInfo();
+        String positiontitle = selectedRow.getPosition_Title();
+        String cellphonenum= selectedRow.getContactNumber();
+         String emailaddress = selectedRow.getEmail();
+         
+        txtname.setText(Name);
+         txtid.setText(EmpID);
+         txtage.setText(Integer.toString(Age));
+         txtgender.setText(Gender);
+         txtsdate.setText(startdate);
+         txtlevel.setText(level);
+         txttminfo.setText(Teaminfo);
+         
+         txtpostit.setText(positiontitle);
+         txtemail.setText(emailaddress);
+         
+         txtno.setText(cellphonenum);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jAge;
@@ -298,11 +348,24 @@ public class viewjpanel extends javax.swing.JPanel {
     private javax.swing.JTextField txttminfo;
     // End of variables declaration//GEN-END:variables
 
-   private void populateTable() {
-DefaultTableModel model =(DefaultTableModel) jTable1.getModel();
-model.setRowCount(0);
-for(Employee vs : history.gethistory()){
-    object[] row = new Object
-}
-    
-}
+    private void PopulateTable() {
+           DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+           model.setRowCount(0);
+        for (Employee abc : history.gethistory()){
+            Object[] row = new Object[10];
+            row[0] = abc;
+            row[1] = abc.getEmployeeId();
+            row[2] = abc.getAge();
+            row[3] = abc.getGender();
+            row[4] = abc.getStart_date();
+            row[5] = abc.getLevel();
+            row[6] = abc.getTeamInfo();
+            row[7] = abc.getPosition_Title();
+            row[8] = abc.getContactNumber();
+            row[9] = abc.getEmail();
+            
+            model.addRow(row);
+    }
+    }
+}        
+         

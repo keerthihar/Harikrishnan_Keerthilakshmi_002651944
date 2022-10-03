@@ -10,7 +10,7 @@ package model;
  * @author keert
  */
 public class Employee {
-    private String Name;
+    private String Name,Email,Position_Title,ContactNumber,TeamInfo;
     private String EmployeeId;
     private int Age;
     private String Gender;
@@ -84,11 +84,11 @@ public class Employee {
         this.Position_Title = Position_Title;
     }
 
-    public int getContactNumber() {
+    public String getContactNumber() {
         return ContactNumber;
     }
 
-    public void setContactNumber(int ContactNumber) {
+    public void setContactNumber(String ContactNumber) {
         this.ContactNumber = ContactNumber;
     }
 

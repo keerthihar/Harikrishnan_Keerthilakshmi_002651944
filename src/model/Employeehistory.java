@@ -22,6 +22,9 @@ public class Employeehistory {
         this.history = history;
         
     }
+    public void delEmp(Employee emp){
+        history.remove(emp);
+    }
     public Employee addnewEmp()
                {
                  Employee newEmp = new Employee();

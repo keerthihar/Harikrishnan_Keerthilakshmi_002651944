@@ -254,7 +254,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         empdata.setContactNumber(txtno.getText());
         empdata.setEmail(txtemail.getText());
         
-        JOptionPane.showMessageDialog(this,"hello");
+        JOptionPane.showMessageDialog(this,"Employee Added Successfuly");
         
         
     }//GEN-LAST:event_jButtonsaveActionPerformed
