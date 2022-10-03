@@ -39,8 +39,8 @@ public class viewjpanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        viewjButton = new javax.swing.JButton();
+        deletejButton = new javax.swing.JButton();
         txttminfo = new javax.swing.JTextField();
         jStartdate = new javax.swing.JLabel();
         txtpostit = new javax.swing.JTextField();
@@ -61,6 +61,7 @@ public class viewjpanel extends javax.swing.JPanel {
         jAge = new javax.swing.JLabel();
         txtlevel = new javax.swing.JTextField();
         jGender = new javax.swing.JLabel();
+        updatejButton3 = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -85,17 +86,17 @@ public class viewjpanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("view");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        viewjButton.setText("view");
+        viewjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                viewjButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Delete");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        deletejButton.setText("Delete");
+        deletejButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                deletejButtonActionPerformed(evt);
             }
         });
 
@@ -131,6 +132,13 @@ public class viewjpanel extends javax.swing.JPanel {
 
         jGender.setText("Gender");
 
+        updatejButton3.setText("Update");
+        updatejButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatejButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,9 +153,11 @@ public class viewjpanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(172, 172, 172)
-                        .addComponent(jButton1)
+                        .addComponent(viewjButton)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton2))
+                        .addComponent(deletejButton)
+                        .addGap(34, 34, 34)
+                        .addComponent(updatejButton3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,8 +195,9 @@ public class viewjpanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(viewjButton)
+                    .addComponent(deletejButton)
+                    .addComponent(updatejButton3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jEmployeeId)
@@ -232,7 +243,7 @@ public class viewjpanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void deletejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletejButtonActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex= jTable1.getSelectedRow();
 
@@ -243,7 +254,7 @@ public class viewjpanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Selected row deleted");
        
         PopulateTable();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_deletejButtonActionPerformed
 
     private void txtpostitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpostitActionPerformed
         // TODO add your handling code here:
@@ -288,7 +299,7 @@ public class viewjpanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void viewjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewjButtonActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex= jTable1.getSelectedRow();
         DefaultTableModel model= (DefaultTableModel) jTable1.getModel();
@@ -317,13 +328,33 @@ public class viewjpanel extends javax.swing.JPanel {
          txtemail.setText(emailaddress);
          
          txtno.setText(cellphonenum);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_viewjButtonActionPerformed
+
+    private void updatejButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatejButton3ActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex= jTable1.getSelectedRow();
+        DefaultTableModel model= (DefaultTableModel) jTable1.getModel();
+        Employee selectedRow= (Employee) model.getValueAt(selectedRowIndex, 0);
+        
+        selectedRow.setName(txtname.getText());
+        selectedRow.setEmployeeId(txtid.getText());
+        selectedRow.setAge(Integer.parseInt(txtage.getText()));
+        selectedRow.setGender(txtgender.getText());
+        selectedRow.setStart_date(txtsdate.getText());
+        selectedRow.setLevel(txtlevel.getText());
+        selectedRow.setTeamInfo(txttminfo.getText());
+        selectedRow.setPosition_Title(txtpostit.getText());
+        selectedRow.setContactNumber(txtno.getText());
+        selectedRow.setEmail(txtemail.getText());
+        
+        JOptionPane.showMessageDialog(this,"Employee updated Successfuly");
+        PopulateTable();
+    }//GEN-LAST:event_updatejButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton deletejButton;
     private javax.swing.JLabel jAge;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jEmail;
     private javax.swing.JLabel jEmployeeId;
     private javax.swing.JLabel jGender;
@@ -346,6 +377,8 @@ public class viewjpanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtpostit;
     private javax.swing.JTextField txtsdate;
     private javax.swing.JTextField txttminfo;
+    private javax.swing.JButton updatejButton3;
+    private javax.swing.JButton viewjButton;
     // End of variables declaration//GEN-END:variables
 
     private void PopulateTable() {
