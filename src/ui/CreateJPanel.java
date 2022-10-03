@@ -5,6 +5,7 @@
 package ui;
 import javax.swing.JOptionPane;
 import model.Employeehistory;
+import model.Employee;
 
 /**
  *
@@ -80,6 +81,11 @@ public class CreateJPanel extends javax.swing.JPanel {
         jName.setText("Name");
 
         jButtonsave.setText("save");
+        jButtonsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonsaveActionPerformed(evt);
+            }
+        });
 
         txtno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +100,11 @@ public class CreateJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(129, 129, 129)
+                .addGap(254, 254, 254)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -104,8 +114,8 @@ public class CreateJPanel extends javax.swing.JPanel {
                         .addComponent(jStartdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLevel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTeaminfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jposition_title, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                        .addComponent(jName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jposition_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jName, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jNumber))
                 .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,25 +125,21 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addComponent(txtlevel)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonsave)
-                        .addGap(0, 126, Short.MAX_VALUE))
+                        .addGap(0, 281, Short.MAX_VALUE))
                     .addComponent(txttminfo)
                     .addComponent(txtpostit)
                     .addComponent(txtemail)
                     .addComponent(txtno)
                     .addComponent(txtsdate)
                     .addComponent(txtid, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(56, 56, 56))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(262, 262, 262)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(52, 52, 52)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jEmployeeId)
                     .addGroup(layout.createSequentialGroup()
@@ -176,7 +182,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addComponent(jNumber))
                 .addGap(21, 21, 21)
                 .addComponent(jButtonsave)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -198,25 +204,25 @@ public class CreateJPanel extends javax.swing.JPanel {
         Employee vs =history.addnewEmp();
         vs.setName(Name);
         vs.setEmployeeId(EmployeeId);
-        vs.setAge(Age);
+        vs.setAge(Integer.parseInt(Age));
                 vs.setGender(Gender);
-                vs.setStartdate(Startdate);
+                vs.setStart_date(Startdate);
                 vs.setLevel(Level);
-                vs.setTeaminfo(Teaminfo);
-                vs.setPositionTitle(PositionTitle);
+                vs.setTeamInfo(Teaminfo);
+                vs.setPosition_Title(PositionTitle);
                 vs.setEmail(Email);
-                vs.setNumber(Number);
+                vs.setContactNumber(Number);
                 JOptionPane.showMessageDialog(this,"New employee added.");
-                txtname.setText("");
-                txtid.setText("");
-                txtage.setText("");
-                txtgender.setText("");
-                txtsdate.setText("");
-                txtlevel.setText("");
-                txttminfo.setText("");
-                txtpostit.setText("");
-                txtemail.setText("");
-                txtno.setText("");
+                txtname.setText("name");
+                txtid.setText("Employeeid");
+                txtage.setText("Age");
+                txtgender.setText("Gender");
+                txtsdate.setText("Startdate");
+                txtlevel.setText("Level");
+                txttminfo.setText("jTeaminfo");
+                txtpostit.setText("postit");
+                txtemail.setText("Email");
+                txtno.setText("Number");
                 
                         
                         
@@ -233,6 +239,25 @@ public class CreateJPanel extends javax.swing.JPanel {
     private void txtnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnoActionPerformed
+
+    private void jButtonsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonsaveActionPerformed
+        // TODO add your handling code here:
+        Employee empdata = history.addnewEmp();
+        empdata.setName(txtname.getText());
+        empdata.setEmployeeId(txtid.getText());
+        empdata.setAge(Integer.parseInt(txtage.getText()));
+        empdata.setGender(txtgender.getText());
+        empdata.setStart_date(txtsdate.getText());
+        empdata.setLevel(txtlevel.getText());
+        empdata.setTeamInfo(txttminfo.getText());
+        empdata.setPosition_Title(txtpostit.getText());
+        empdata.setContactNumber(txtno.getText());
+        empdata.setEmail(txtemail.getText());
+        
+        JOptionPane.showMessageDialog(this,"hello");
+        
+        
+    }//GEN-LAST:event_jButtonsaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

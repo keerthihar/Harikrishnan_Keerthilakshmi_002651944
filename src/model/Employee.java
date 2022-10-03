@@ -4,16 +4,17 @@
  */
 package model;
 
+
 /**
  *
  * @author keert
  */
 public class Employee {
     private String Name;
-    private int EmployeeId;
+    private String EmployeeId;
     private int Age;
     private String Gender;
-    private int Start_date;
+    private String Start_date;
     private String Level;
     
     
@@ -27,11 +28,11 @@ public class Employee {
         this.Name = Name;
     }
 
-    public int getEmployeeId() {
+    public String getEmployeeId() {
         return EmployeeId;
     }
 
-    public void setEmployeeId(int EmployeeId) {
+    public void setEmployeeId(String EmployeeId) {
         this.EmployeeId = EmployeeId;
     }
 
@@ -51,11 +52,11 @@ public class Employee {
         this.Gender = Gender;
     }
 
-    public int getStart_date() {
+    public String getStart_date() {
         return Start_date;
     }
 
-    public void setStart_date(int Start_date) {
+    public void setStart_date(String Start_date) {
         this.Start_date = Start_date;
     }
 
@@ -98,10 +99,7 @@ public class Employee {
     public void setEmail(String Email) {
         this.Email = Email;
     }
-    private String TeamInfo;
-    private String Position_Title;
-    private int ContactNumber;
-    private String Email;
+
     
     
     
